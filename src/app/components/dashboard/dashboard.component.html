@@ -1,36 +1,26 @@
 <div class="conten-dashboard">
-  <div *ngIf="weather; else este">
-    <h1>{{ weather.name }}</h1>
+  <div  *ngIf="weather; else este">
+    <h1>{{ weather.name }}, {{weather.sys.country}}</h1>
     <div class="conten-clima">
+
       <div class="item-clima">
-        <img src="https://img.icons8.com/fluency/240/000000/weather.png" />
-        <h3>tiempo</h3>
+        <h2>{{weather.main.temp}} ºC</h2>
+        <img src="../../../assets/img/icons/{{icon }}.png" />
+        <h3>{{ weather.weather[0].description.toUpperCase() }}</h3>
       </div>
-      <div class="item-clima">
-        <img src="https://img.icons8.com/fluency/240/000000/weather.png" />
-        <h3>{{ weather.weather[0].description }}</h3>
-      </div>
-      <div class="item-clima">
-        <img src="https://img.icons8.com/fluency/240/000000/weather.png" />
-        <h3>tiempo</h3>
-      </div>
+
     </div>
   </div>
   <ng-template #este>
     <h1>Ciudad</h1>
     <div class="conten-clima">
+
       <div class="item-clima">
-        <img src="https://img.icons8.com/fluency/240/000000/weather.png" />
+        <h2>76º C</h2>
+        <img src="../../../assets/img/icons/02.png" />
         <h3>tiempo</h3>
       </div>
-      <div class="item-clima">
-        <img src="https://img.icons8.com/fluency/240/000000/weather.png" />
-        <h3>tiempo</h3>
-      </div>
-      <div class="item-clima">
-        <img src="https://img.icons8.com/fluency/240/000000/weather.png" />
-        <h3>tiempo</h3>
-      </div>
+
     </div>
   </ng-template>
   <div class="conten-input">

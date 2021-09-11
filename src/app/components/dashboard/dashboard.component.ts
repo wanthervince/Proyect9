@@ -8,6 +8,9 @@ import { ClimaService } from '../../services/clima.service';
 export class DashboardComponent implements OnInit {
   getCiudad!: string;
   weather: any;
+  icon!: string;
+  descripcion!: string;
+  ok!: string;
   constructor(private climaService: ClimaService) {}
 
   ngOnInit(): void {}
@@ -16,8 +19,16 @@ export class DashboardComponent implements OnInit {
       (res) => {
         this.weather = res;
         console.log(res);
+        this.icon = this.weather.weather[0].icon.substring(2, -1);
+        this.descripcion = this.weather.weather[0].description.toUpperCase()
+      this.getCiudad = '';
       },
-      (err) => console.log(err)
+      (err) => {
+        console.log(err)
+        alert(err.error.message)
+        this.ok = err.ok;
+        this.getCiudad = '';
+      }
     );
   }
 }

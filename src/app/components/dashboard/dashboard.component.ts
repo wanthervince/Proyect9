@@ -15,16 +15,14 @@ export class DashboardComponent implements OnInit {
   constructor(private climaService: ClimaService) {}
 
   ngOnInit(): void {
-    this.climaService.getWeatherInit().subscribe((res) => {
-      this.city = res;
-      this.getCiudad = this.city.city;
-      this.getWeather();
-    });
+    this.getCiudadIp();
   }
 
-  getWeather() {
-    this.climaService.getWeather(this.getCiudad).subscribe(
+  getWeather(city: string) {
+    this.weather = '';
+    this.climaService.getWeather(city).subscribe(
       (res) => {
+        console.log(res);
         this.weather = res;
         this.icon = this.weather.weather[0].icon.substring(2, -1);
         this.descripcion = this.weather.weather[0].description.toUpperCase();
@@ -34,7 +32,18 @@ export class DashboardComponent implements OnInit {
         alert(err.error.message);
         this.ok = err.ok;
         this.getCiudad = '';
+        this.getCiudadIp();
       }
     );
+  }
+
+  getCiudadIp() {
+    this.climaService.getWeatherInit().subscribe((res) => {
+      this.city = res;
+      this.city = this.city.city;
+      setTimeout(() => {
+        this.getWeather(this.city);
+      }, 1000);
+    });
   }
 }

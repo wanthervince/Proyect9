@@ -1,13 +1,13 @@
-.navbar{
- display: flex;
- align-items: center;
+.navbar {
+  display: flex;
+  align-items: center;
 }
-.logo{
- height: 7rem;
+.logo {
+  height: 7rem;
 }
-.navbar > p{
- font-size: 4rem;
- line-height: 0;
- font-weight: 600;
- margin-left: 20px;
+.navbar > p {
+  font-size: 4rem;
+  line-height: 0;
+  font-weight: 600;
+  margin-left: 20px;
 }

@@ -1,26 +1,22 @@
 <div class="conten-dashboard">
-  <div  *ngIf="weather; else este">
-    <h1>{{ weather.name }}, {{weather.sys.country}}</h1>
+  <div *ngIf="weather; else este">
+    <h1>{{ weather.name }}, {{ weather.sys.country }}</h1>
     <div class="conten-clima">
-
       <div class="item-clima">
-        <h2>{{weather.main.temp}} ºC</h2>
-        <img src="../../../assets/img/icons/{{icon }}.png" />
+        <h2>{{ weather.main.temp }} ºC</h2>
+        <img src="../../../assets/img/icons/{{ icon }}.png" />
         <h3>{{ weather.weather[0].description.toUpperCase() }}</h3>
       </div>
-
     </div>
   </div>
   <ng-template #este>
     <h1>Ciudad</h1>
     <div class="conten-clima">
-
       <div class="item-clima">
         <h2>76º C</h2>
         <img src="../../../assets/img/icons/02.png" />
         <h3>tiempo</h3>
       </div>
-
     </div>
   </ng-template>
   <div class="conten-input">
